@@ -1,0 +1,129 @@
+
+@mixin container {
+    cursor: pointer;
+    z-index: 5;
+    position: relative;
+    transition: all 0.3s .1s;
+    box-sizing: border-box;
+    min-width: 8%;
+    flex-wrap: wrap;
+    padding: 10px;
+    background-color: #F0F4EF;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin: 10px;
+    .ticker-dividend {
+        font-size: 0.6em;
+        margin-bottom: 5px;
+        color:#384D48;
+    }
+}
+
+@mixin ticker-name {
+    padding: 5px;
+    background-color: #344966;
+    border-radius: 5px;
+    font-size: 0.7em;
+    color:white;
+    margin-bottom: 20px;
+}
+@mixin ticker-change-percent {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    padding: 5px 0 5px 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: ease-in-out 0.5s .1s;
+}
+
+.ticker-container {
+    @include container;
+    .ticker-name-positive {
+      @include ticker-name;
+    }
+    .ticker-name-negative {
+        @include ticker-name;
+      }
+    .ticker-price {
+        font-size: 1.1em;
+        color: #11586A;
+        font-weight: bold;
+        width: 100%; 
+        margin-bottom: 5px;
+    }
+    .ticker-change {
+        font-size: 0.8em;
+        margin-bottom: 5px;
+        color:#6D9C96;
+       
+    }
+    .ticker-time {
+        font-size: 0.7em;
+        color: #BB6C11; 
+    }
+    .ticker-negative-change {
+        opacity: 0;
+        top: 80%;
+        visibility: hidden;
+        background-color: #344966;
+        @include ticker-change-percent;
+    } 
+    .ticker-positive-change {
+        opacity: 0;
+        top: 80%;
+        visibility: hidden;
+        background-color: #344966;
+        @include ticker-change-percent;
+    }      
+}
+
+.ticker-container-hover {
+    @include container;
+    transition: all 0.3s .1s;
+    transform: translate(0,-15px);
+   
+    .ticker-name-negative {
+        transition: all 1s .1s;
+        @include ticker-name;
+        background-color: #DB2763;
+       
+    }
+    .ticker-name-positive {
+        transition: all 1s .1s;
+        @include ticker-name;
+        background-color: #11df82;
+    }
+    .ticker-price {
+        font-size:  1.1em;
+        color: #11586A;
+        font-weight: bold;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .ticker-change {
+        font-size: 0.8em;
+        margin-bottom: 5px;
+        color: #6D9C96;
+    }
+    .ticker-time {
+        font-size: 0.7em;
+        color: #BB6C11; 
+    }
+    .ticker-negative-change {
+        background-color: #DB2763;
+        top:95%;
+        transform: translate(0,15px);
+        color: whitesmoke;
+        @include ticker-change-percent;
+    } 
+    .ticker-positive-change {
+        background-color: #11df82;
+        top:95%;
+        transform: translate(0,15px);
+        color: whitesmoke;
+        @include ticker-change-percent;
+    }      
+}
